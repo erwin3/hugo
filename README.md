@@ -1,4 +1,4 @@
 hugo
 ====
 
-HUman Group Onsight - a tool to visualize family constelations
+Human Group Onsight - a tool to visualize family constelations

@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0045)http://www.cborck.de/analyse/ende/puzzle.html -->
+<html>
+		<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">
+		<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+		<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd"-->
+		<title>HuGO - Familiensteller</title>
+		  
+		<style type="text/css">
+				
+				.hugooverallframe{
+				background-color: #04B404;
+				margin: 10px auto;
+				min-width:1070px;
+				border-top-left-radius: 50px;
+				border-top-right-radius: 50px;
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;		
+				
+				-moz-box-shadow: 0 0 10px #043F07;
+    	-webkit-box-shadow: 0 0 10px #043F07;
+    	box-shadow: inset 0 0 10px #043F07;		
+				}
+				
+				.hugocapital{
+				background-color: #298A08;
+				height:80px;
+				border-top-left-radius: 50px;
+				border-top-right-radius: 50px;
+				
+				-moz-box-shadow: 0 0 10px #043F07;
+    	-webkit-box-shadow: 0 0 10px #043F07;
+    	box-shadow: inset 0 0 10px #043F07;	
+				}
+				
+				.hugomenue{
+				background-color: #298A08;
+				height:40px;
+				width:100%;
+				}
+				
+				.hugomenuebutton{
+				background-color: #298A08;
+				height:40px;
+				width:100px;
+				float:left;
+				text-align:center;
+				}
+				
+				.hugomenuebuttonomo{
+				background-color: #324342;
+				height:40px;
+				width:100px;
+				float:left;
+				text-align:center;
+				}
+				
+				.filler{
+				background-color: #04B404;
+				height:20px;				
+				}
+				
+				.hugoinlet{
+				background-color: #04B404;
+				margin: 0px auto;
+				height: 440px;
+				}
+				
+				.board {
+				position:absolute;
+				float:left;
+				height: 400px;
+				width: 400px; 
+				border: solid #000 2px;
+				margin: 20px ;
+				border-collapse:collapse;
+				background-color: #aaaaaa;
+				}
+				
+				.figureadder {
+				position:absolute;
+				float:left;
+				height: 0px;
+				width: 400px; 
+				border: solid #000 0px;
+				margin: 20px ;
+				border-collapse:collapse;
+				background-color: #aaaaaa;
+				}
+				
+				.figurepanel {
+				position:absolute;
+				left:440px;
+				#top:110px;
+				margin: 20px ;
+				width: 600px; 
+				height: 400px;
+				border: solid #000 2px;
+				border-collapse:collapse;
+				background-color: #aaaaaa;
+				background-image: url(img/wood/wood.w.01.jpg);
+				}
+				
+				.figure {
+				position:relative;
+				float:left;
+				}
+				
+				.dead {
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+     transform:rotate(90deg);
+				}
+				
+				.figureOnBoard {
+				position:relative;
+				float:left;
+				}
+				
+				.figurepanel2 {
+				position:absolute;
+				left:400px;
+				top:-404px;
+				width: 200px; 
+				height: 400px;
+				border: solid #000 2px;
+				border-collapse:collapse;
+				background-color: #aaaaaa;
+				}
+				
+				.boardline {
+				float:left;
+				width:400px;
+				height:50px;
+				}
+				
+				.boardfield {								
+				float:left;
+				border: solid ;<!--#000 2px;-->
+				width:50px;
+				height:50px;
+				margin:5px;
+				}
+				
+				.boardfieldwhite {								
+				float:left;
+				border: solid 0;
+				width:50px;
+				height:50px;
+				margin:0px;
+				background-color: #fff;
+				background-image: url(img/wood/wood.w.01.jpg);
+				}
+				
+				.boardfieldblack {
+				float:left;
+				border: solid 0;
+				width:50px;
+				height:50px;
+				margin:0px;
+				background-color: #DDDDDD;
+				background-image: url(img/wood/wood.b.01.png);
+				}
+
+  </style>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+  <style>
+  #draggable { width: 30px; height: 30px; }
+  </style>
+  <script>
+  $(function() {
+    $(".figure").click(function () {
+            // copy the figure, atribute false deletes the click-event
+            var copy = $(this).clone(false);
+
+            // add a unique ID
+            copy.attr("id", copy.attr("id") + "-1");
+
+            // remove class figure as we dont want a duplicate of this copy
+            copy.removeClass("figure");    
+
+            // add the class figureOnBoard                    
+            copy.addClass("figureOnBoard");
+            //copy.addClass("dead");
+            
+            // set draggable - so it can be dragged - jquery UI
+            copy.draggable();
+            copy.find('img').css('width' , '50px');
+            copy.find('img').css('height', '50px');
+
+            copy.bind('click', function () {
+                // rotate on click
+                if ($(this).hasClass('dead')) 
+                {                
+                  $(this).removeClass("dead");
+                }
+                else 
+                {
+                  $(this).addClass("dead");
+                }
+            });
+            
+            // add this copy to the container div
+            $("#figureadder").append(copy);
+     });
+     
+     $(".figureOnBoard").click(function () {
+            // rotate on click
+            $(this).addClass("dead");
+     });
+     
+  });
+     
+  </script>
+    
+  <style type="text/css"></style>
+</head>
+
+<body>
+
+<div class="hugooverallframe">
+  <div class="hugocapital">
+			<div style="text-align: center">
+					<font size="+4" color="#FFFFFF">HuGO</font><font color="#FFFFFF">v0.0.1alpha</font>		<br>
+					<font color="#FFFFFF">Human Group Onsight</font>		
+			</div>
+  </div>
+  <div class="hugomenue">
+			 <div>
+      <div class="hugomenuebutton" style="vertical-align: middle;" onMouseover="this.className='hugomenuebuttonomo'" onMouseout="this.className='hugomenuebutton'" onclick="javascript:window.print()" type="button"><font style="font-family:Verdana,Sans,Arial" color="#FFFFFF">Drucken</font></div>
+      <div class="hugomenuebutton" style="vertical-align: middle;" onMouseover="this.className='hugomenuebuttonomo'" onMouseout="this.className='hugomenuebutton'" onclick="" type="button"><font style="font-family:Verdana,Sans,Arial" color="#FFFFFF">Senden</font></div>
+      <div class="hugomenuebutton" style="vertical-align: middle;" onMouseover="this.className='hugomenuebuttonomo'" onMouseout="this.className='hugomenuebutton'" onclick="" type="button"><font style="font-family:Verdana,Sans,Arial" color="#FFFFFF">Laden</font></div>
+      <div class="hugomenuebutton" style="vertical-align: middle;" onMouseover="this.className='hugomenuebuttonomo'" onMouseout="this.className='hugomenuebutton'" onclick="" type="button"><font style="font-family:Verdana,Sans,Arial" color="#FFFFFF">Speichern</font></div>
+      <div class="hugomenuebutton" style="vertical-align: middle;" onMouseover="this.className='hugomenuebuttonomo'" onMouseout="this.className='hugomenuebutton'" onclick="" type="button"><font style="font-family:Verdana,Sans,Arial" color="#FFFFFF">Hilfe</font></div>
+      <div class="hugomenuebutton" style="vertical-align: middle;" onMouseover="this.className='hugomenuebuttonomo'" onMouseout="this.className='hugomenuebutton'" onclick="" type="button"><font style="font-family:Verdana,Sans,Arial" color="#FFFFFF"><a href="http://erwin3.github.io/hugo/">Über Hugo</a></font></div>
+			 </div>
+  </div>
+  <div class="hugoinlet">
+				<div id="boardx" class="board"> 
+		    <div class="boardline">
+		      <div id="bf11" class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		    </div>
+		    <div class="boardline">
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		    </div>
+		    <div class="boardline">
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		    </div>
+		    <div class="boardline">
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		    </div>
+		    <div class="boardline">
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		    </div>
+		    <div class="boardline">
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		    </div>
+		    <div class="boardline">
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		    </div>
+		    <div class="boardline">
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		      <div class="boardfieldblack"></div>
+		      <div class="boardfieldwhite"></div>
+		    </div>
+				</div>
+    <div id="figureadder" class="figureadder"></div>			
+			 	<div class="figurepanel">
+			 	  <div style="width: 600px;">
+								<div id="draggable" class="figure"> 
+										<img alt="king_b" 
+				       				src="img/pieces.01/Chess_king_b.png" 
+				       				id="king_b" 
+				       				style="width: 30px; height: 30px;" 
+				       				name="Koenig schwarz (name)" 
+				       				title="Koenig schwarz">
+								</div>
+								<div id="draggable" class="figure"> 
+										<img alt="king_w" 
+				       				src="img/pieces.01/Chess_king_w.png" 
+				       				id="king_w" 
+				       				style="width: 30px; height: 30px;" 
+				       				name="Koenig weiss (name)" 
+				       				title="Koenig weiss">
+								</div>
+								<textarea style="max-width:480px" name="comments" cols="80" rows="3">König...</textarea>
+						</div>
+						<div style="width: 600px;">
+								<div id="draggable" class="figure"> 
+										<img alt="queen_b" 
+				       				src="img/pieces.01/Chess_queen_b.png" 
+				       				id="queen_b" 
+				       				style="width: 30px; height: 30px;" 
+				       				name="Dame schwarz (name)" 
+				       				title="Dame schwarz">
+								</div>
+								<div id="draggable" class="figure"> 
+										<img alt="queen_w" 
+				       				src="img/pieces.01/Chess_queen_w.png" 
+				       				id="queen_w" 
+				       				style="width: 30px; height: 30px;" 
+				       				name="Dame weiss (name)" 
+				       				title="Dame weiss">
+								</div>
+								<textarea style="max-width:480px" name="comments" cols="80" rows="3">Dame...</textarea>
+						</div>
+						<div style="width: 600px;">
+								<div id="draggable" class="figure"> 
+										<img alt="bishop_b" 
+				       				src="img/pieces.01/Chess_bishop_b.png" 
+				       				id="bishop_b" 
+				       				style="width: 30px; height: 30px;" 
+				       				name="Laeufer schwarz (name)" 
+				       				title="Laeufer schwarz">
+								</div>
+								<div id="draggable" class="figure"> 
+										<img alt="bishop_w" 
+				       				src="img/pieces.01/Chess_bishop_w.png" 
+				       				id="bishop_w" 
+				       				style="width: 30px; height: 30px;" 
+				       				name="Laeufer weiss (name)" 
+				       				title="Laeufer weiss">
+								</div>
+								<textarea style="max-width:480px" name="comments" cols="80" rows="3">Läufer...</textarea>
+						</div>
+						<div style="width: 600px;">
+								<div id="draggable" class="figure"> 
+											<img alt="knight_b" 
+					       				src="img/pieces.01/Chess_knight_b.png" 
+					       				id="knight_b" 
+					       				style="width: 30px; height: 30px;" 
+					       				name="Pferd schwarz (name)" 
+					       				title="Pferd schwarz">
+									</div>
+									<div id="draggable" class="figure"> 
+											<img alt="knight_w" 
+					       				src="img/pieces.01/Chess_knight_w.png" 
+					       				id="knight_w" 
+					       				style="width: 30px; height: 30px;" 
+					       				name="Pferd weiss (name)" 
+					       				title="Pferd weiss">
+									</div>									
+							  <textarea style="max-width:480px" name="comments" cols="80" rows="3">Pferd...</textarea>
+							</div>
+							<div style="width: 600px;">
+									<div id="draggable" class="figure"> 
+											<img alt="rook_b" 
+					       				src="img/pieces.01/Chess_rook_b.png" 
+					       				id="rook_b" 
+					       				style="width: 30px; height: 30px;" 
+					       				name="Turm schwarz (name)" 
+					       				title="Turm schwarz">
+									</div>
+									<div id="draggable" class="figure"> 
+											<img alt="rook_w" 
+					       				src="img/pieces.01/Chess_rook_w.png" 
+					       				id="rook_w" 
+					       				style="width: 30px; height: 30px;" 
+					       				name="Turm weiss (name)" 
+					       				title="Turm weiss">
+									</div>
+									<textarea style="max-width:480px" name="comments" cols="80" rows="3">Turm...</textarea>
+							</div>
+							<div style="width: 600px;">
+									<div id="draggable" class="figure"> 
+											<img alt="pawn_b" 
+					       				src="img/pieces.01/Chess_pawn_b.png" 
+					       				id="pawn_b" 
+					       				style="width: 30px; height: 30px;" 
+					       				name="Bauer schwarz (name)" 
+					       				title="Bauer schwarz">
+									</div>
+									<div id="draggable" class="figure"> 
+											<img alt="pawn_w" 
+					       				src="img/pieces.01/Chess_pawn_w.png" 
+					       				id="pawn_w" 
+					       				style="width: 30px; height: 30px;" 
+					       				name="Bauer weiss (name)" 
+					       				title="Bauer weiss">
+									</div>
+									<textarea style="max-width:480px" name="comments" cols="80" rows="3">Bauer...</textarea>
+							</div>
+				</div>
+		</div>
+</div>
+
+</body>
+</html>

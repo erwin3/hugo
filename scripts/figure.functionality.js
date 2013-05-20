@@ -1,3 +1,7 @@
+/* author: hmaelzer
+ * date: 20.05.2013
+ */
+
 function ActivateFunctionality() 
 {
 	$(".figure").click(function () 

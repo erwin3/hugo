@@ -64,13 +64,14 @@ height:20px;
 {
 background-color: #04B404;
 margin: 0px auto;
-height: 440px;
+height: 480px;
 }
 
 .board 
 {
 position:absolute;
 float:left;
+top: 167px;
 height: 400px;
 width: 400px; 
 border: solid #000 2px;
@@ -83,6 +84,7 @@ background-color: #aaaaaa;
 {
 position:absolute;
 float:left;
+top: 167px;
 height: 0px;
 width: 400px; 
 border: solid #000 0px;
@@ -98,7 +100,22 @@ left:440px;
 #top:110px;
 margin: 20px ;
 width: 600px; 
-height: 400px;
+height: 437px;
+border: solid #000 2px;
+border-collapse:collapse;
+background-color: #aaaaaa;
+background-image: url(img/wood/wood.w.01.jpg);
+}
+
+.figurepanellandscape 
+{
+position:relative;
+#left:440px;
+#top:110px;
+margin: 20px ;
+float:left;
+width: 400px; 
+height: 35px;
 border: solid #000 2px;
 border-collapse:collapse;
 background-color: #aaaaaa;
@@ -111,6 +128,36 @@ position:relative;
 float:left;
 }
 
+.figureimage
+{
+width: 30px; 
+height: 30px;
+} 
+
+img.chessking
+{
+width:100px;
+height:100px;
+background:url(img/pieces.01/Chess_king_w.png) 0 0;
+}
+               
+.chessking 
+{
+position:relative;
+float:left;
+width: 30px; 
+height: 30px;
+background-image: url(img/pieces.01/Chess_king_w.png);
+}
+
+textarea.figcoments
+{
+max-width:480px;
+name:comments;
+cols:80;
+rows:3;
+}
+          
 .dead 
 {
 -moz-transform:rotate(90deg);

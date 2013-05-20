@@ -1,0 +1,172 @@
+.hugooverallframe
+{
+background-color: #04B404;
+margin: 10px auto;
+min-width:1070px;
+border-top-left-radius: 50px;
+border-top-right-radius: 50px;
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;		
+
+-moz-box-shadow: 0 0 10px #043F07;
+ 	-webkit-box-shadow: 0 0 10px #043F07;
+ 	box-shadow: inset 0 0 10px #043F07;		
+}
+
+.hugocapital
+{
+background-color: #298A08;
+height:80px;
+border-top-left-radius: 50px;
+border-top-right-radius: 50px;
+
+-moz-box-shadow: 0 0 10px #043F07;
+ 	-webkit-box-shadow: 0 0 10px #043F07;
+ 	box-shadow: inset 0 0 10px #043F07;	
+}
+
+.hugomenue
+{
+background-color: #298A08;
+height:40px;
+width:100%;
+}
+
+.hugomenuebutton
+{
+background-color: #298A08;
+height:40px;
+width:100px;
+float:left;
+text-align:center;
+}
+
+.hugomenuebuttonomo
+{
+background-color: #324342;
+height:40px;
+width:100px;
+float:left;
+text-align:center;
+}
+
+.filler
+{
+background-color: #04B404;
+height:20px;				
+}
+
+.hugoinlet
+{
+background-color: #04B404;
+margin: 0px auto;
+height: 440px;
+}
+
+.board 
+{
+position:absolute;
+float:left;
+height: 400px;
+width: 400px; 
+border: solid #000 2px;
+margin: 20px ;
+border-collapse:collapse;
+background-color: #aaaaaa;
+}
+
+.figureadder 
+{
+position:absolute;
+float:left;
+height: 0px;
+width: 400px; 
+border: solid #000 0px;
+margin: 20px ;
+border-collapse:collapse;
+background-color: #aaaaaa;
+}
+
+.figurepanel 
+{
+position:absolute;
+left:440px;
+#top:110px;
+margin: 20px ;
+width: 600px; 
+height: 400px;
+border: solid #000 2px;
+border-collapse:collapse;
+background-color: #aaaaaa;
+background-image: url(img/wood/wood.w.01.jpg);
+}
+
+.figure 
+{
+position:relative;
+float:left;
+}
+
+.dead 
+{
+-moz-transform:rotate(90deg);
+-webkit-transform:rotate(90deg);
+-o-transform:rotate(90deg);
+transform:rotate(90deg);
+}
+
+.figureOnBoard
+{
+position:relative;
+float:left;
+}
+
+.figurepanel2 
+{
+position:absolute;
+left:400px;
+top:-404px;
+width: 200px; 
+height: 400px;
+border: solid #000 2px;
+border-collapse:collapse;
+background-color: #aaaaaa;
+}
+
+.boardline 
+{
+float:left;
+width:400px;
+height:50px;
+}
+
+.boardfield 
+{								
+float:left;
+border: solid ;<!--#000 2px;-->
+width:50px;
+height:50px;
+margin:5px;
+}
+
+.boardfieldwhite 
+{								
+float:left;
+border: solid 0;
+width:50px;
+height:50px;
+margin:0px;
+background-color: #fff;
+background-image: url(img/wood/wood.w.01.jpg);
+}
+
+.boardfieldblack 
+{
+float:left;
+border: solid 0;
+width:50px;
+height:50px;
+margin:0px;
+background-color: #DDDDDD;
+background-image: url(img/wood/wood.b.01.png);
+}
